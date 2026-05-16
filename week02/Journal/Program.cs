@@ -1,9 +1,79 @@
 using System;
 
+class PromptGenerator
+{
+    public string GetRandomPrompt()
+    {
+        return "";
+    }
+}
+
+class Entry
+{
+    public string _date;
+    public string _promptText;
+    public string _responseText;
+}
+
+class Journal
+{
+    public void AddEntry(Entry entry) { }
+    public void DisplayAll() { }
+    public void SaveToFile(string file) { }
+    public void LoadFromFile(string file) { }
+}
+
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        Journal journal = new Journal();
+        PromptGenerator promptGen = new PromptGenerator();
+
+        int choice = 0;
+
+        while (choice != 5)
+        {
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("1. Write New Entry");
+            Console.WriteLine("2. Display Journal");
+            Console.WriteLine("3. Save Journal");
+            Console.WriteLine("4. Load Journal");
+            Console.WriteLine("5. Exit");
+            Console.Write("Select a choice: ");
+
+            choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                string prompt = promptGen.GetRandomPrompt();
+                Console.WriteLine(prompt);
+                Console.Write("> ");
+                string response = Console.ReadLine();
+
+                Entry entry = new Entry();
+                entry._date = DateTime.Now.ToShortDateString();
+                entry._promptText = prompt;
+                entry._responseText = response;
+
+                journal.AddEntry(entry);
+            }
+            else if (choice == 2)
+            {
+                journal.DisplayAll();
+            }
+            else if (choice == 3)
+            {
+                Console.Write("Enter filename: ");
+                string file = Console.ReadLine();
+                journal.SaveToFile(file);
+            }
+            else if (choice == 4)
+            {
+                Console.Write("Enter filename: ");
+                string file = Console.ReadLine();
+                journal.LoadFromFile(file);
+            }
+        }
     }
 }
