@@ -1,28 +1,5 @@
 using System;
 
-class PromptGenerator
-{
-    public string GetRandomPrompt()
-    {
-        return "";
-    }
-}
-
-class Entry
-{
-    public string _date;
-    public string _promptText;
-    public string _responseText;
-}
-
-class Journal
-{
-    public void AddEntry(Entry entry) { }
-    public void DisplayAll() { }
-    public void SaveToFile(string file) { }
-    public void LoadFromFile(string file) { }
-}
-
 class Program
 {
     static void Main(string[] args)
@@ -34,13 +11,12 @@ class Program
 
         while (choice != 5)
         {
-            Console.WriteLine("Menu Options:");
-            Console.WriteLine("1. Write New Entry");
-            Console.WriteLine("2. Display Journal");
-            Console.WriteLine("3. Save Journal");
-            Console.WriteLine("4. Load Journal");
-            Console.WriteLine("5. Exit");
-            Console.Write("Select a choice: ");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Save");
+            Console.WriteLine("4. Load");
+            Console.WriteLine("5. Quit");
+            Console.Write("Choose an option: ");
 
             choice = int.Parse(Console.ReadLine());
 
@@ -48,13 +24,14 @@ class Program
             {
                 string prompt = promptGen.GetRandomPrompt();
                 Console.WriteLine(prompt);
+
                 Console.Write("> ");
                 string response = Console.ReadLine();
 
                 Entry entry = new Entry();
                 entry._date = DateTime.Now.ToShortDateString();
-                entry._promptText = prompt;
-                entry._responseText = response;
+                entry._prompt = prompt;
+                entry._response = response;
 
                 journal.AddEntry(entry);
             }
