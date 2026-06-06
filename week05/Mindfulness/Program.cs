@@ -4,6 +4,43 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Mindfulness Project.");
+         while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Mindfulness Program");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Quit");
+            Console.Write("Select a choice: ");
+
+            string choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                BreathingActivity b = new BreathingActivity();
+                b.Run();
+            }
+            else if (choice == "2")
+            {
+                ReflectionActivity r = new ReflectionActivity();
+                r.Run();
+            }
+            else if (choice == "3")
+            {
+                ListingActivity l = new ListingActivity();
+                l.Run();
+            }
+            else if (choice == "4")
+            {
+                break;
+            }
+        }
     }
 }
+
+
+// - Added Stopwatch for accurate timing
+// - Used spinner animation
+// - Random prompts and questions
+// - Clean OOP design with inheritance
